@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;
 
 namespace ConsoleAppDotnetCore
 {
@@ -6,7 +7,7 @@ namespace ConsoleAppDotnetCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            WriteLine("Hello World!");
         }
     }
 }
