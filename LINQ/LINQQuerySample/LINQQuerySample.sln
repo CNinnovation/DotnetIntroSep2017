@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQQuerySample", "LINQQuerySample\LINQQuerySample.csproj", "{AB84F777-FBBF-439F-93DB-77631CD0E5A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLib", "..\DataLib\DataLib.csproj", "{50803B5D-C1A5-4DCD-8681-43CEF1B3CC53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB84F777-FBBF-439F-93DB-77631CD0E5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB84F777-FBBF-439F-93DB-77631CD0E5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB84F777-FBBF-439F-93DB-77631CD0E5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB84F777-FBBF-439F-93DB-77631CD0E5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50803B5D-C1A5-4DCD-8681-43CEF1B3CC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50803B5D-C1A5-4DCD-8681-43CEF1B3CC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50803B5D-C1A5-4DCD-8681-43CEF1B3CC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50803B5D-C1A5-4DCD-8681-43CEF1B3CC53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D2DCEE4-6764-4934-98BB-3F0B78FEFEB3}
+	EndGlobalSection
+EndGlobal
