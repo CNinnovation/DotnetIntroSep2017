@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AB84F777-FBBF-439F-93DB-77631CD0E5A1}</ProjectGuid>
+    <ProjectGuid>{CB197FC8-136F-4FC2-A92C-E25DBCB66297}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LINQQuerySample</RootNamespace>
-    <AssemblyName>LINQQuerySample</AssemblyName>
+    <RootNamespace>ExpressionTreeSample</RootNamespace>
+    <AssemblyName>ExpressionTreeSample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,10 +34,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ValueTuple">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,15 +44,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SomeData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DataLib\DataLib.csproj">
-      <Project>{50803b5d-c1a5-4dcd-8681-43cef1b3cc53}</Project>
+      <Project>{15cb66ef-c964-4eb9-bfe7-10994c4bfff0}</Project>
       <Name>DataLib</Name>
     </ProjectReference>
   </ItemGroup>

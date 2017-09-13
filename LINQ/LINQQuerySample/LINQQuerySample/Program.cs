@@ -19,7 +19,56 @@ namespace LINQQuerySample
             // GroupingSampleWithMethods();
             // CompoundFromSample();
             // CompoundFromWithMethods();
-            RacersByCarSample();
+            // CompoundFromWithTuples();
+            // RacersByCarSample();
+            // LocalFunctionsSample();
+            ExpressionSample();
+
+        }
+
+        private static void ExpressionSample()
+        {
+            var q = Formula1.GetChampions().AsQueryable()
+                .Where(r => r.Country == "Austria")
+                .OrderByDescending(r => r.Wins)
+                .ThenBy(r => r.LastName)
+                .Select(r => r);
+        }
+
+        private static void CompoundFromWithTuples()
+        {
+            var q = Formula1.GetChampions()
+            .SelectMany(r => r.Cars, (r1, car) =>
+            (
+                Racer : r1,
+                Car : car
+            ))
+            .Where(item => item.Car == "Ferrari")
+            .Select(item => item.Racer);
+
+            foreach (var r in q)
+            {
+                Console.WriteLine(r);
+            }
+        }
+
+        private static void LocalFunctionsSample()
+        {
+            IEnumerable<Racer> driversByCar(string car)
+            {
+                return from r in Formula1.GetChampions()
+                from c in r.Cars
+                where c == car
+                select r;
+            }
+
+            var mcLarenDrivers = driversByCar("McLaren");
+            var ferrariDrivers = driversByCar("Ferrari");
+            var championsWithFerrariAndMcLaren = mcLarenDrivers.Intersect(ferrariDrivers);
+            foreach (var r in championsWithFerrariAndMcLaren)
+            {
+                Console.WriteLine(r);
+            }
         }
 
         private static void RacersByCarSample()
@@ -39,7 +88,6 @@ namespace LINQQuerySample
             {
                 Console.WriteLine(r);
             }
-
         }
 
         private static void CompoundFromWithMethods()
@@ -48,7 +96,7 @@ namespace LINQQuerySample
             //    .Where(r => r.Cars.Contains("Ferrari"))
 
             var q = Formula1.GetChampions()
-                .SelectMany(r => r.Cars, (r1, car) =>
+                .SelectMany(r => r.Cars, (r1, car) =>                
                 new
                 {
                     Racer = r1,
@@ -87,14 +135,31 @@ namespace LINQQuerySample
 
         private static void GroupingSampleWithMethods()
         {
+            //var q = Formula1.GetChampions()
+            //   .GroupBy(r => r.Country)
+            //   .OrderByDescending(g => g.Count())
+            //   .ThenBy(g => g.Key).Take(6);
             var q = Formula1.GetChampions()
-               .GroupBy(r => r.Country)
-               .OrderByDescending(g => g.Count())
-               .ThenBy(g => g.Key).Take(6);
+                .GroupBy(r => r.Country)
+                .OrderByDescending(g => g.Count())
+                .ThenBy(g => g.Key)
+                .Take(6)
+                .Select(g => new
+                {
+                    Country = g.Key,
+                    Count = g.Count(),
+                    Racers = g.OrderByDescending(r => r.Wins)
+                        .ThenBy(r => r.LastName)
+                        .Select(r => $"{r.FirstName} {r.LastName}")
+                });
 
             foreach (var group in q)
             {
-                Console.WriteLine($"{group.Key} {group.Count()}");
+                Console.WriteLine($"{group.Country} {group.Count}");
+                foreach (var r in group.Racers)
+                {
+                    Console.WriteLine($"\t{r}");
+                }
             }
         }
 
