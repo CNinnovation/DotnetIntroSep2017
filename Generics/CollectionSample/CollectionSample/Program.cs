@@ -12,7 +12,17 @@ namespace CollectionSample
         {
             // ListDemo();
             // QueueDemo();
-            StackDemo();
+            // StackDemo();
+            LinkedListDemo();
+        }
+
+        private static void LinkedListDemo()
+        {
+            var myList = new LinkedList<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                LinkedListNode<int> node = myList.AddLast(i);
+            }
         }
 
         private static void StackDemo()
@@ -54,6 +64,8 @@ namespace CollectionSample
                 intList.Add(i);
                 Console.WriteLine($"added {i}, capacity: {intList.Capacity}");
             }
+
+            intList.Insert(22, 42);
 
         }
     }
