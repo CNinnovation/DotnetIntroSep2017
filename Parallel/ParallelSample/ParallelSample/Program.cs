@@ -17,8 +17,38 @@ namespace ParallelSample
             // TaskDemo();
             // ParallelDemo();
             // ParallelData();
-            ParallelLinq();
+            // ParallelLinq();
+            ParallelDemoWithCancellation();
             Console.ReadLine();
+        }
+
+        private static void ParallelDemoWithCancellation()
+        {
+            var data = Enumerable.Range(0, 10000).Select(x => new SomeData { Number = x, Text = $"text {x}" }).ToList();
+
+            CancellationTokenSource cts = new CancellationTokenSource();
+            Task.Run(() =>
+            {
+                Thread.Sleep(1500);
+                Console.WriteLine("cancel now");
+                cts.Cancel();
+            });
+
+            try
+            {
+
+                Parallel.ForEach(data, new ParallelOptions() { CancellationToken = cts.Token }, sd =>
+                {
+                    Console.WriteLine($"started loop {sd.Number}, in task {Task.CurrentId}");
+                    Thread.Sleep(500);
+                    Console.WriteLine($"finished loop {sd.Number}, in task {Task.CurrentId}");
+                });
+            }
+            catch (OperationCanceledException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.WriteLine("end of ForEach");
         }
 
         private static void ParallelLinq()
