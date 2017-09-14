@@ -15,15 +15,27 @@ namespace AsyncPatternsSample
         {
             // AsyncPatternSampleASync();  // ab .NET 1.0
             // AsyncEventPattern();  // ab .NET 2.0
-            TaskBasedAsyncPattern(); // ab C# 5.0
+            RunAsync().Wait();  // Wait blocks calling thread
             Console.WriteLine("finished");
             Console.ReadLine();
         }
 
-        private static async void TaskBasedAsyncPattern()
+        private static async Task RunAsync()
+        {
+            try
+            {
+                await TaskBasedAsyncPattern(); // ab C# 5.0
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private static async Task TaskBasedAsyncPattern()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("http://www.microsoft.com");
+            HttpResponseMessage response = await client.GetAsync("http://www.microsoft42.com");
             // thread in sync context
             string content = await response.Content.ReadAsStringAsync();
             Console.WriteLine(content);
@@ -56,7 +68,7 @@ namespace AsyncPatternsSample
         static void AsyncPatternSampleASync()
         {
             HttpWebRequest req = WebRequest.Create("http://www.microsoft.com") as HttpWebRequest;
-            req.BeginGetResponse(ar =>
+            IAsyncResult ar1 = req.BeginGetResponse(ar =>
             {
                 WebResponse response = req.EndGetResponse(ar);
                 Stream stream = response.GetResponseStream();
@@ -65,7 +77,8 @@ namespace AsyncPatternsSample
                 Console.WriteLine(content);  // need to switch to UI Thread
             }, null);
 
-
         }
+
+
     }
 }

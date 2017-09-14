@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{50B792AB-D82F-4228-B8BE-D504E0EA0672}</ProjectGuid>
+    <ProjectGuid>{256A8075-E963-420A-883B-ED50540A7590}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AsyncPatternsSample</RootNamespace>
-    <AssemblyName>AsyncPatternsSample</AssemblyName>
+    <RootNamespace>ResourcesSample</RootNamespace>
+    <AssemblyName>ResourcesSample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
